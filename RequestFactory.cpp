@@ -50,6 +50,23 @@ int RequestFactory::SendComm(std::string id, int controlComm, std::string ip, st
 			"Scale: 0.5\r\n"
 			"Range: npt=0-20\r\n");
 	}
+    else if (controlComm == server->SEND_DEVINFO2)
+    {
+        sprintf(body, "<?xml version=\"1.0\"?>\r\n"
+                      "<Response>\r\n"
+                      "<CmdType>DeviceInfo</CmdType>\r\n"
+                      "<SN>17430</SN>\r\n"
+                      "<DeviceID>%s</DeviceID>\r\n"
+                      "<DeviceName>HTIPC</DeviceName>\r\n"
+                      "<Result>OK</Result>\r\n"
+                      "<Manufacturer>Happytimesoft</Manufacturer>\r\n"
+                      "<Model>HTIPC</Model>\r\n"
+                      "<Firmwave>V1.0</Firmwave>\r\n"
+                      "<Channel>1</Channel>\r\n"
+                      "</Response>\r\n"
+                      "\r\n"
+            , server->m_serverInfo->m_ID.c_str());
+    }
     else if(controlComm == server->BYE)
     {
         cout << "bye build" << endl;

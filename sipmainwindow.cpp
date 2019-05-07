@@ -163,5 +163,6 @@ void SIPMAINWINDOW::on_btnDownload_clicked()
 
 void SIPMAINWINDOW::on_btnSendDevInfo_clicked()
 {
-    server->m_factory->GetDeviceControlFactory()->SendComm("34020000002000000001", ExosipServer::SEND_DEVINFO);
+    //server->m_factory->GetDeviceControlFactory()->SendComm("34020000002000000001", ExosipServer::SEND_DEVINFO);
+    server->m_factory->GetRequestFactory()->SendComm("34020000002000000001", ExosipServer::SEND_DEVINFO2);
 }

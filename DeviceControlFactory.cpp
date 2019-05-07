@@ -89,7 +89,7 @@ int DeviceControlFactory::SendComm(std::string id, int controlComm, std::string 
                           "<DeviceID>%s</DeviceID>\r\n"
                           "<DeviceName>HTIPC</DeviceName>\r\n"
                           "<Result>OK</Result>\r\n"
-                          "<Manufacturer>Happtimesoft</Manufacturer>\r\n"
+                          "<Manufacturer>Happytimesoft</Manufacturer>\r\n"
                           "<Model>HTIPC</Model>\r\n"
                           "<Firmwave>V1.0</Firmwave>\r\n"
                           "<Channel>1</Channel>\r\n"
@@ -101,7 +101,11 @@ int DeviceControlFactory::SendComm(std::string id, int controlComm, std::string 
     {
     }
 
+    osip_message_set_call_id(msg, "0123012301230123@192.168.1.220");
+    //osip_message_set_call_info(msg, "0123012301230123@192.168.1.220");
 
+    eXosip_set_user_agent(Server->m_server, "HTSIP US/2.1");
+    //osip_message_set_user_agent(msg, "HTSIP US/2.1");
     osip_message_set_body(msg, xml_body, strlen(xml_body));
 
     ret = eXosip_message_send_request(Server->m_server, msg);

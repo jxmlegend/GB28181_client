@@ -188,6 +188,8 @@ int ExosipServer::ServerListen(int m, int s)
             {
                 cout << "EXOSIP_MESSAGE_NEW" << endl;
                 osip_message_get_body(m_event->request, 0, &msg_body);
+                m_videoDid = m_event->did;
+                cout << "m_event did: " << m_event->did << endl;
                 cout << msg_body->body << endl;
                 eXosip_message_build_answer(m_server, m_event->tid, 200, &msg);
                 eXosip_message_send_answer(m_server, m_event->tid, 200, msg);
@@ -386,8 +388,8 @@ std::string ExosipServer::GetFromHeader(std::string id)
         contact += m_serverInfo->m_ID;
         contact += "@";
         contact += m_serverInfo->m_domain;
-        contact += ":";
-        contact += m_serverInfo->m_Port;
+        //contact += ":";
+        //contact += m_serverInfo->m_Port;
 
     }
     else
